@@ -8,21 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		5E3EC1C82D3E875E0083582A /* MyLocationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3EC1C72D3E875E0083582A /* MyLocationApp.swift */; };
-		5E3EC1CA2D3E875E0083582A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3EC1C92D3E875E0083582A /* ContentView.swift */; };
 		5E3EC1CC2D3E87600083582A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E3EC1CB2D3E87600083582A /* Assets.xcassets */; };
 		5E3EC1CF2D3E87600083582A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E3EC1CE2D3E87600083582A /* Preview Assets.xcassets */; };
 		5E3EC1DD2D3E891C0083582A /* CurrentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3EC1DC2D3E891C0083582A /* CurrentLocationView.swift */; };
 		5E3EC1DF2D3ED15D0083582A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3EC1DE2D3ED15D0083582A /* LocationManager.swift */; };
+		5E3EC1E22D3F7D0B0083582A /* Button+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3EC1E12D3F7D0B0083582A /* Button+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5E3EC1C42D3E875E0083582A /* MyLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E3EC1C72D3E875E0083582A /* MyLocationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationApp.swift; sourceTree = "<group>"; };
-		5E3EC1C92D3E875E0083582A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5E3EC1CB2D3E87600083582A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E3EC1CE2D3E87600083582A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5E3EC1DC2D3E891C0083582A /* CurrentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationView.swift; sourceTree = "<group>"; };
 		5E3EC1DE2D3ED15D0083582A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		5E3EC1E12D3F7D0B0083582A /* Button+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 			children = (
 				5E3EC1C72D3E875E0083582A /* MyLocationApp.swift */,
 				5E3EC1D52D3E87AF0083582A /* Tab Views */,
-				5E3EC1C92D3E875E0083582A /* ContentView.swift */,
+				5E3EC1E02D3F7CEF0083582A /* Extensions */,
 				5E3EC1CB2D3E87600083582A /* Assets.xcassets */,
 				5E3EC1CD2D3E87600083582A /* Preview Content */,
 			);
@@ -103,6 +103,14 @@
 				5E3EC1DE2D3ED15D0083582A /* LocationManager.swift */,
 			);
 			path = "First Tab";
+			sourceTree = "<group>";
+		};
+		5E3EC1E02D3F7CEF0083582A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5E3EC1E12D3F7D0B0083582A /* Button+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,8 +185,8 @@
 			files = (
 				5E3EC1DF2D3ED15D0083582A /* LocationManager.swift in Sources */,
 				5E3EC1DD2D3E891C0083582A /* CurrentLocationView.swift in Sources */,
-				5E3EC1CA2D3E875E0083582A /* ContentView.swift in Sources */,
 				5E3EC1C82D3E875E0083582A /* MyLocationApp.swift in Sources */,
+				5E3EC1E22D3F7D0B0083582A /* Button+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +323,7 @@
 				DEVELOPMENT_TEAM = 386NUBNWC7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app lets you keep track of interesting places. It needs access to the GPS\ncoordinates for your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -344,6 +353,7 @@
 				DEVELOPMENT_TEAM = 386NUBNWC7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app lets you keep track of interesting places. It needs access to the GPS\ncoordinates for your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

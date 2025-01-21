@@ -8,38 +8,59 @@
 import SwiftUI
 
 struct CurrentLocationView: View {
+    
+    @StateObject var manager = LocationManager.shared
+    @State private var showAlert = false
+    
     var body: some View {
-        VStack() {
-            
-            Text("Message Label")
-                .padding(.bottom, 25)
-            
-            VStack(alignment: .leading) {
-                
-                HStack(spacing: 30) {
-                    Text("Latitude:");  Text("(Latitude goes here)")
-                }
-                .padding(.bottom)
-                
-                HStack(spacing: 30) {
-                    Text("Longitude:");  Text("(Longitude goes here)")
-                }
-                .padding(.bottom)
-                
-                Text("(Addres Goes Here)")
-            }
-            .padding(.bottom, 50)
-            
+        VStack(alignment: .center) {
+            messageLabel
+            addresesLabel
         }
         .padding(.leading, -70)
-        
-        Button {  } label: { Text("Tag Location") }
-        
+        tagLocationButton
         Spacer()
-        
-        Button {  } label: { Text("Get My Location") }
+        getMyLocationButton
+            .showLocationServicesDeniedAlert(isPresented: $showAlert)
             .padding(.bottom, 60)
-        
+    }
+
+    var messageLabel: some View {
+        Text("Message Label")
+            .padding(.bottom, 25)
+    }
+    
+    @ViewBuilder
+    var addresesLabel: some View {
+        VStack(alignment: .leading) {
+            HStack(spacing: 30) {
+                Text("Latitude:")
+                Text("\(manager.latitude)")
+            }
+            .padding(.bottom)
+            
+            HStack(spacing: 30) {
+                Text("Longitude:")
+                Text("\(manager.longitude)")
+            }
+            .padding(.bottom)
+            Text("(Addres Goes Here)")
+        }
+        .padding(.bottom, 50)
+    }
+    
+    var tagLocationButton: some View {
+        Button {  } label: { Text("Tag Location") }
+    }
+    
+    var getMyLocationButton: some View {
+        Button {
+            manager.getLocation()
+            if manager.locationError != nil {
+                showAlert = true
+            }
+            
+        } label: { Text("Get My Location") }
     }
 }
 
