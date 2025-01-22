@@ -1,4 +1,4 @@
-# Chapter 22
+# Chapter 22 Get Location Data
 • Get GPS Coordinates: Create a tab bar-based app and set up the UI for the first tab.
 
 • CoreLocation: Use the CoreLocation framework to get the user’s current location.
