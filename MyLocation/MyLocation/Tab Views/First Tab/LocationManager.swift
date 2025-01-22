@@ -15,6 +15,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     let locationManager: CLLocationManager
     
     @Published var locationError: Error? = nil
+    @Published var updatingLocation = false
     @Published var location: CLLocation?
     @Published var latitude = ""
     @Published var longitude = ""
@@ -22,7 +23,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     @Published var messageText = ""
     @Published var addressText = ""
     
-   override init() {
+    override init() {
         self.locationManager = CLLocationManager()
         super.init()
         self.askPermission()
@@ -30,10 +31,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     
     
     func getLocation() {
-        
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.startUpdatingLocation()
+        startLocationManager()
+        locationError = nil
+        updateLabels()
     }
     
     private func askPermission() {
@@ -46,9 +46,14 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     
     // MARK: - CLLocationManagerDelegate
     
-     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-         locationError = error
-         print("didFailWithError: \(String(describing: locationError))")
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        
+        print("didFailWithError: \(String(describing: locationError))")
+        
+        if (error as NSError).code == CLError.locationUnknown.rawValue { return }
+        locationError = error
+        //         stopLocationManager()
+        updateLabels()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -57,21 +62,55 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         updateLabels()
     }
     
-    func updateLabels() {
+    private func updateLabels() {
         if let location {
+            
             latitude = String(format: "%.8f", location.coordinate.latitude)
-            
             longitude = String(format: "%.8f", location.coordinate.longitude)
-            
             tagButtonHidden = false
-            
             messageText = ""
+            
         } else {
+            
             latitude = ""
             longitude = ""
-            messageText = "Tap 'Get My Location' to Start"
             tagButtonHidden = true
             addressText = ""
+            
+            let statusMessage: String
+            
+            if let error = locationError as NSError? {
+                if error.domain == kCLErrorDomain && error.code == CLError.denied.rawValue {
+                    statusMessage = "Location Services Disabled"
+                } else {
+                    statusMessage = "Error Getting Location"
+                }
+                
+            } else if !CLLocationManager.locationServicesEnabled() {
+                statusMessage = "Location Services Disabled"
+            } else if updatingLocation {
+                statusMessage = "Searching..."
+            } else {
+                statusMessage = "Tap 'Get My Location' to Start"
+            }
+            messageText = statusMessage
+        }
+    }
+    
+    private func stopLocationManager() {
+        if updatingLocation {
+            locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
+            updatingLocation = false
+        }
+    }
+    
+    private func startLocationManager() {
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+            updatingLocation = true
         }
     }
 }

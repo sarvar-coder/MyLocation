@@ -66,5 +66,5 @@ struct CurrentLocationView: View {
 }
 
 #Preview {
-    CurrentLocationView()
+    CurrentLocationView() 
 }
