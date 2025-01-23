@@ -22,6 +22,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     @Published var tagButtonHidden = true
     @Published var messageText = ""
     @Published var addressText = ""
+    @Published var getButtonTitle = "Get My Location"
     
     override init() {
         self.locationManager = CLLocationManager()
@@ -31,9 +32,13 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     
     
     func getLocation() {
-        startLocationManager()
-        locationError = nil
-        updateLabels()
+        if updatingLocation {
+            stopLocationManager()
+        } else {
+            startLocationManager()
+            locationError = nil
+            updateLabels()
+        }
     }
     
     private func askPermission() {
@@ -59,7 +64,22 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let  newLocation = locations.last else { return }
         location = newLocation
-        updateLabels()
+        
+        if newLocation.timestamp.timeIntervalSinceNow < -5 { return }
+         
+        
+        if newLocation.horizontalAccuracy < 0 { return }
+        
+        if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
+            locationError = nil
+            location = newLocation
+            
+            if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
+                print("*** We're done")
+                stopLocationManager()
+            }
+            updateLabels()
+        }
     }
     
     private func updateLabels() {
@@ -94,6 +114,15 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
                 statusMessage = "Tap 'Get My Location' to Start"
             }
             messageText = statusMessage
+        }
+//        configureGetButton()
+    }
+    
+    private func configureGetButton() {
+        if updatingLocation {
+            getButtonTitle = "Stop"
+        } else {
+            getButtonTitle = "Get My Location"
         }
     }
     

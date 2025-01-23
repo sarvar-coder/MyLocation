@@ -16,15 +16,15 @@ struct CurrentLocationView: View {
         VStack(alignment: .center) {
             messageLabel
             addresesLabel
+            
+                .padding(.leading, -70)
+            tagLocationButton
+            Spacer()
+            getMyLocationButton
+                .showLocationServicesDeniedAlert(isPresented: $showAlert)
+                .padding(.bottom, 60)
         }
-        .padding(.leading, -70)
-        tagLocationButton
-        Spacer()
-        getMyLocationButton
-            .showLocationServicesDeniedAlert(isPresented: $showAlert)
-            .padding(.bottom, 60)
     }
-
     var messageLabel: some View {
         Text(manager.messageText)
             .padding(.bottom, 25)
@@ -32,15 +32,16 @@ struct CurrentLocationView: View {
     
     @ViewBuilder
     var addresesLabel: some View {
-        VStack(alignment: .leading) {
-            HStack(spacing: 30) {
+        HStack(spacing: 30) {
+            VStack(alignment: .leading, spacing: 30) {
                 Text("Latitude:")
-                Text(manager.latitude)
+                Text("Longitude:")
+                
             }
             .padding(.bottom)
             
-            HStack(spacing: 30) {
-                Text("Longitude:")
+            VStack(alignment: .leading, spacing: 30) {
+                Text(manager.latitude)
                 Text(manager.longitude)
             }
             .padding(.bottom)
@@ -61,7 +62,7 @@ struct CurrentLocationView: View {
                 showAlert = true
             }
             
-        } label: { Text("Get My Location") }
+        } label: { Text(manager.getButtonTitle) }
     }
 }
 
