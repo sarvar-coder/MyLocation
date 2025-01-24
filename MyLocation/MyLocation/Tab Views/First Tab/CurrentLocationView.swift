@@ -16,8 +16,9 @@ struct CurrentLocationView: View {
         VStack(alignment: .center) {
             messageLabel
             addresesLabel
-            
                 .padding(.leading, -70)
+            addressText
+            
             tagLocationButton
             Spacer()
             getMyLocationButton
@@ -32,24 +33,33 @@ struct CurrentLocationView: View {
     
     @ViewBuilder
     var addresesLabel: some View {
-        HStack(spacing: 30) {
+        HStack() {
             VStack(alignment: .leading, spacing: 30) {
                 Text("Latitude:")
                 Text("Longitude:")
                 
+                
             }
+            
             .padding(.bottom)
             
-            VStack(alignment: .leading, spacing: 30) {
+            VStack(spacing: 30) {
                 Text(manager.latitude)
                 Text(manager.longitude)
+                
             }
+            .offset(x: 100, y: 0)
             .padding(.bottom)
-            Text(manager.addressText)
+            
         }
-        .padding(.bottom, 50)
+        
     }
     
+    var addressText: some View {
+        Text(manager.addressText)
+            .center()
+            .padding(.bottom, 50)
+    }
     var tagLocationButton: some View {
         Button {  } label: { Text("Tag Location") }
             .opacity(manager.tagButtonHidden ? 0 : 1)
@@ -58,14 +68,12 @@ struct CurrentLocationView: View {
     var getMyLocationButton: some View {
         Button {
             manager.getLocation()
-            if manager.locationError != nil {
-                showAlert = true
-            }
+            showAlert = manager.showAleert
             
         } label: { Text(manager.getButtonTitle) }
     }
 }
 
 #Preview {
-    CurrentLocationView() 
+    CurrentLocationView()
 }
