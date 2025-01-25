@@ -28,7 +28,7 @@ struct CurrentLocationView: View {
         }
         .fullScreenCover(isPresented: $showTagLocation) {
             NavigationStack {
-                TagLocationView()
+                TagLocationView(coordinate: manager.location!.coordinate, placeMark: manager.placemark)
             }
         }
     }

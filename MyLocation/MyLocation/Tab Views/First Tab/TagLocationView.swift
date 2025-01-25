@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct TagLocationView: View {
     
     @Environment(\.dismiss) private var dismiss
     @State private var text = ""
+    
+    var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    var placeMark: CLPlacemark?
+    
     var body: some View {
         
         VStack {
@@ -90,7 +95,7 @@ struct TagLocationView: View {
         HStack {
             Text("Latitude:")
             Spacer()
-            Text("12.12345678")
+            Text(String(format:"%.8f", coordinate.latitude))
         }
         .padding()
         Divider()
@@ -101,7 +106,7 @@ struct TagLocationView: View {
         HStack {
             Text("Longitude:")
             Spacer()
-            Text("-12.12345678")
+            Text(String(format:"%.8f", coordinate.longitude))
         }
         .padding()
         Divider()
@@ -112,9 +117,12 @@ struct TagLocationView: View {
         HStack {
             Text("Address:")
             Spacer()
-            Text("Uzbekistan, Xorazam vil, Hazorasp tum, Paxlavon Maxmud, G.Gulom 34/9")
-                .lineLimit(0)
-                
+            if let placeMark {
+                Text(string(from: placeMark))
+                    .lineLimit(0)
+            }  else {
+                Text("No Address Found")
+            }
         }
         .padding()
         Divider()
@@ -130,6 +138,30 @@ struct TagLocationView: View {
         Divider()
     }
     
+    //  MARK: - Helper Methods
+    func string(from placemark: CLPlacemark) -> String {
+      // 1
+      var line1 = ""
+      // 2
+      if let tmp = placemark.subThoroughfare {
+        line1 += tmp + " "
+      }
+    // 3
+      if let tmp = placemark.thoroughfare {
+    line1 += tmp }
+    // 4
+      var line2 = ""
+      if let tmp = placemark.locality {
+        line2 += tmp + " "
+      }
+      if let tmp = placemark.administrativeArea {
+        line2 += tmp + " "
+      }
+      if let tmp = placemark.postalCode {
+    line2 += tmp }
+    // 5
+      return line1 + "\n" + line2
+    }
 }
 
 #Preview {
