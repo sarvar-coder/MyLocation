@@ -17,3 +17,22 @@
 scenarios.
 
 • Support different screen sizes: Setting up your UI to work on iOS devices with different screen sizes.
+
+# Chapter 24 Classes and Objects
+there is my job is only reading. Get to
+know difference beetwen object and class. 
+bullet points:
+- casting
+- inheritence
+- overriding 
+
+# Chapter 25 The tag Location Screen
+• The Screen: What the finished screen looks like and what it will do.
+
+• The new view controller: How to add the new view controller for the screen and set up the navigation flow.
+
+• Make the cells: Create the table view cells for displaying information.
+
+• Display location info: Display location info on screen via the new view.
+
+• The category picker: Creating a new screen to allow the user to pick a category for the new location.
