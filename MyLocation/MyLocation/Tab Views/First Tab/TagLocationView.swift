@@ -12,6 +12,8 @@ struct TagLocationView: View {
     
     @Environment(\.dismiss) private var dismiss
     @State private var text = ""
+    @AppStorage("selectedcategory") private var selectedCategory = "No Category"
+
     
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var placeMark: CLPlacemark?
@@ -20,8 +22,20 @@ struct TagLocationView: View {
         
         VStack {
             descriptionTextField
-            category
-            addPhotoButton
+            NavigationLink {
+                CategoryPickerView(selectedCategory: $selectedCategory)
+            } label: {
+                category
+            }
+            NavigationLink {
+                Text("Photo picker")
+            } label: {
+                addPhotoButton
+            }
+          
+                
+            
+            
             latitude
             longitude
             address
@@ -48,6 +62,7 @@ struct TagLocationView: View {
         }
         .navigationTitle("Tag Location")
         .navigationBarTitleDisplayMode(.inline)
+        
     }
     
     @ViewBuilder
@@ -60,22 +75,20 @@ struct TagLocationView: View {
     
     @ViewBuilder
     var category: some View {
-        Divider()
+        
         HStack {
             Text("Category")
             Spacer()
-            Text("Bookstore")
+            Text(selectedCategory)
             Image(systemName: "chevron.right")
                 .foregroundStyle(.secondary)
         }
         .padding()
-        Divider()
-            .padding(.bottom, 40)
     }
     
     @ViewBuilder
     var addPhotoButton: some View {
-        Divider()
+        
         HStack {
             Text("Add Photo")
             Spacer()
@@ -83,8 +96,7 @@ struct TagLocationView: View {
                 .foregroundStyle(.secondary)
         }
         .padding()
-        Divider()
-            .padding(.bottom, 40)
+        
     }
     
     @ViewBuilder
