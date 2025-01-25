@@ -11,6 +11,7 @@ struct CurrentLocationView: View {
     
     @StateObject var manager = LocationManager.shared
     @State private var showAlert = false
+    @State private var showTagLocation = false
     
     var body: some View {
         VStack(alignment: .center) {
@@ -24,6 +25,11 @@ struct CurrentLocationView: View {
             getMyLocationButton
                 .showLocationServicesDeniedAlert(isPresented: $showAlert)
                 .padding(.bottom, 60)
+        }
+        .fullScreenCover(isPresented: $showTagLocation) {
+            NavigationStack {
+                TagLocationView()
+            }
         }
     }
     var messageLabel: some View {
@@ -61,7 +67,9 @@ struct CurrentLocationView: View {
             .padding(.bottom, 50)
     }
     var tagLocationButton: some View {
-        Button {  } label: { Text("Tag Location") }
+        Button { 
+            showTagLocation.toggle()
+        } label: { Text("Tag Location") }
             .opacity(manager.tagButtonHidden ? 0 : 1)
     }
     
