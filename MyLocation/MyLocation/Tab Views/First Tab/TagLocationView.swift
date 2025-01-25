@@ -45,12 +45,9 @@ struct TagLocationView: View {
                     Text("Cancel")
                 }
             }
-            
         }
         .navigationTitle("Tag Location")
         .navigationBarTitleDisplayMode(.inline)
-        
-        
     }
     
     @ViewBuilder
@@ -60,6 +57,7 @@ struct TagLocationView: View {
         Divider()
             .padding(.bottom, 70)
     }
+    
     @ViewBuilder
     var category: some View {
         Divider()
@@ -119,11 +117,12 @@ struct TagLocationView: View {
             Spacer()
             if let placeMark {
                 Text(string(from: placeMark))
-                    .lineLimit(0)
+                    .layoutPriority(0)
             }  else {
                 Text("No Address Found")
             }
         }
+        .frame(maxWidth: .infinity)
         .padding()
         Divider()
     }
@@ -132,7 +131,7 @@ struct TagLocationView: View {
         HStack {
             Text("Date:")
             Spacer()
-            Text("\(Date().description)")
+            Text(Date().dateFormatter)
         }
         .padding()
         Divider()
@@ -160,7 +159,7 @@ struct TagLocationView: View {
       if let tmp = placemark.postalCode {
     line2 += tmp }
     // 5
-      return line1 + "\n" + line2
+      return line1 + line2
     }
 }
 
