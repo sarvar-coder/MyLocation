@@ -24,13 +24,13 @@ struct CategoryPickerView: View {
         "Landmark",
         "Park"
     ]
+    
     var body: some View {
         VStack {
             List {
                 ForEach(categories, id: \.self) { category in
                     HStack {
                         Text(category)
-                        
                         Spacer()
                         if selectedCategory == category {
                             Image(systemName: "checkmark")
@@ -41,8 +41,6 @@ struct CategoryPickerView: View {
                         selectedCategory = category
                     }
                 }
-                
-
             }
             .listStyle(.inset)
         }

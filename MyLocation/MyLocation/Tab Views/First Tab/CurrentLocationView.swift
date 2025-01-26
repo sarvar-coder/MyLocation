@@ -32,6 +32,7 @@ struct CurrentLocationView: View {
             }
         }
     }
+    
     var messageLabel: some View {
         Text(manager.messageText)
             .padding(.bottom, 25)
@@ -43,8 +44,6 @@ struct CurrentLocationView: View {
             VStack(alignment: .leading, spacing: 30) {
                 Text("Latitude:")
                 Text("Longitude:")
-                
-                
             }
             
             .padding(.bottom)
@@ -56,9 +55,7 @@ struct CurrentLocationView: View {
             }
             .offset(x: 100, y: 0)
             .padding(.bottom)
-            
         }
-        
     }
     
     var addressText: some View {
@@ -66,6 +63,7 @@ struct CurrentLocationView: View {
             .center()
             .padding(.bottom, 50)
     }
+    
     var tagLocationButton: some View {
         Button { 
             showTagLocation.toggle()

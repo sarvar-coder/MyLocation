@@ -13,40 +13,43 @@ struct TagLocationView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var text = ""
     @AppStorage("selectedcategory") private var selectedCategory = "No Category"
-
+    @State private var showHudView = false
+        @FocusState private var keyBoarHidden: Bool
+    
+    let boxWidth: CGFloat = 96
+    let boxHeight: CGFloat = 96
+    let uiColor: Color = Color(uiColor: UIColor(white: 0.3, alpha: 0.8))
     
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var placeMark: CLPlacemark?
     
     var body: some View {
         
-        VStack {
-            descriptionTextField
-            NavigationLink {
-                CategoryPickerView(selectedCategory: $selectedCategory)
-            } label: {
-                category
+        ZStack {
+            if showHudView {
+                HudView()
+                    .transition(.opacity)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            withAnimation {
+                                showHudView = false
+                            }
+                        }
+                    }
             }
-            NavigationLink {
-                Text("Photo picker")
-            } label: {
-                addPhotoButton
+            VStack {
+                content
             }
-          
-                
-            
-            
-            latitude
-            longitude
-            address
-            date
-            Spacer()
         }
-        
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    dismiss()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                        dismiss()
+                    }
+                    withAnimation {
+                        showHudView = true
+                    }
                 } label: {
                     Text("Done")
                 }
@@ -62,12 +65,35 @@ struct TagLocationView: View {
         }
         .navigationTitle("Tag Location")
         .navigationBarTitleDisplayMode(.inline)
-        
+    }
+    
+    @ViewBuilder
+    var content: some View {
+        descriptionTextField
+        VStack {
+            NavigationLink {
+                CategoryPickerView(selectedCategory: $selectedCategory)
+            } label: {
+                category
+            }
+            NavigationLink {
+                Text("Photo picker")
+            } label: {
+                addPhotoButton
+            }
+            latitude
+            longitude
+            address
+            date
+            Spacer()
+        }
+                .onTapGesture { keyBoarHidden = false }
     }
     
     @ViewBuilder
     var descriptionTextField: some View {
         TextField("Description", text: $text)
+                    .focused($keyBoarHidden)
             .padding([.leading, .trailing, .top])
         Divider()
             .padding(.bottom, 70)
@@ -96,7 +122,6 @@ struct TagLocationView: View {
                 .foregroundStyle(.secondary)
         }
         .padding()
-        
     }
     
     @ViewBuilder
@@ -151,27 +176,27 @@ struct TagLocationView: View {
     
     //  MARK: - Helper Methods
     func string(from placemark: CLPlacemark) -> String {
-      // 1
-      var line1 = ""
-      // 2
-      if let tmp = placemark.subThoroughfare {
-        line1 += tmp + " "
-      }
-    // 3
-      if let tmp = placemark.thoroughfare {
-    line1 += tmp }
-    // 4
-      var line2 = ""
-      if let tmp = placemark.locality {
-        line2 += tmp + " "
-      }
-      if let tmp = placemark.administrativeArea {
-        line2 += tmp + " "
-      }
-      if let tmp = placemark.postalCode {
-    line2 += tmp }
-    // 5
-      return line1 + line2
+        // 1
+        var line1 = ""
+        // 2
+        if let tmp = placemark.subThoroughfare {
+            line1 += tmp + " "
+        }
+        // 3
+        if let tmp = placemark.thoroughfare {
+            line1 += tmp }
+        // 4
+        var line2 = ""
+        if let tmp = placemark.locality {
+            line2 += tmp + " "
+        }
+        if let tmp = placemark.administrativeArea {
+            line2 += tmp + " "
+        }
+        if let tmp = placemark.postalCode {
+            line2 += tmp }
+        // 5
+        return line1 + line2
     }
 }
 

@@ -15,3 +15,5 @@ struct MyLocationApp: App {
         }
     }
 }
+
+// TODO: - Clean The Code
