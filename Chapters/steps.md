@@ -36,3 +36,10 @@ bullet points:
 • Display location info: Display location info on screen via the new view.
 
 • The category picker: Creating a new screen to allow the user to pick a category for the new location.
+
+# Chapter 26: Adding Polish
+• Improve the user experience: How to improve the user experience by adding tiny tweaks to your app which gives it some polish.
+
+• Add a HUD: How to add a HUD (Heads Up Display) to your app to provide a quick, animated status update.
+
+• Handle the navigation: How to continue the navigation flow after displaying the HUD.
