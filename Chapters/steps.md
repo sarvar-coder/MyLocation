@@ -43,3 +43,20 @@ bullet points:
 • Add a HUD: How to add a HUD (Heads Up Display) to your app to provide a quick, animated status update.
 
 • Handle the navigation: How to continue the navigation flow after displaying the HUD.
+
+# Chapter 27: Saving Locations
+
+• Core Data overview: A brief overview of what Core Data is and how it works.
+
+• Add Core Data: Add the Core Data framework to the app and use it.
+
+• The data store: Initializing the data store used by Core Data.
+
+• Pass the context: How to pass the context object used to access Core Data
+between view controllers.
+
+• Browse the data: Looking through the saved data.
+
+• Save the locations: Saving entered location information using Core Data.
+
+• Handle Core Data errors: Handling Core Data errors when there’s an issue with saving.
