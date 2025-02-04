@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct MyLocationApp: App {
+    
+    let persistentContainer = PersistenceController.shared
     var body: some Scene {
         WindowGroup {
             CurrentLocationView()
+                .environment(\.managedObjectContext, persistentContainer.viewContext)
         }
     }
 }

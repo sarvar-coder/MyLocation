@@ -11,10 +11,14 @@ import CoreLocation
 struct TagLocationView: View {
     
     @Environment(\.dismiss) private var dismiss
-    @State private var text = ""
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(sortDescriptors: []) private var locations: FetchedResults<Location>
+    @State private var descriptionText = ""
     @AppStorage("selectedcategory") private var selectedCategory = "No Category"
     @State private var showHudView = false
-        @FocusState private var keyBoarHidden: Bool
+    @FocusState private var keyBoarHidden: Bool
+    @State private var savedOnce = true
+    
     
     let boxWidth: CGFloat = 96
     let boxHeight: CGFloat = 96
@@ -44,9 +48,9 @@ struct TagLocationView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                        dismiss()
-                    }
+
+                    save()
+                    savedOnce = false
                     withAnimation {
                         showHudView = true
                     }
@@ -58,8 +62,9 @@ struct TagLocationView: View {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
                     dismiss()
+                    savedOnce = true
                 } label: {
-                    Text("Cancel")
+                    Text("Close")
                 }
             }
         }
@@ -92,7 +97,7 @@ struct TagLocationView: View {
     
     @ViewBuilder
     var descriptionTextField: some View {
-        TextField("Description", text: $text)
+        TextField("Description", text: $descriptionText)
                     .focused($keyBoarHidden)
             .padding([.leading, .trailing, .top])
         Divider()
@@ -175,33 +180,29 @@ struct TagLocationView: View {
     }
     
     //  MARK: - Helper Methods
-    func string(from placemark: CLPlacemark) -> String {
-        // 1
-        var line1 = ""
-        // 2
-        if let tmp = placemark.subThoroughfare {
-            line1 += tmp + " "
+    private func save() {
+        let location = Location(context: context)
+        
+        location.locationDescription = descriptionText
+        location.latitude = coordinate.latitude
+        location.longitude = coordinate.longitude
+        location.placemark = placeMark
+        location.date = Date()
+        
+        do {
+            if savedOnce {
+                try context.save()
+            }
+        } catch {
+            print(error.localizedDescription)
         }
-        // 3
-        if let tmp = placemark.thoroughfare {
-            line1 += tmp }
-        // 4
-        var line2 = ""
-        if let tmp = placemark.locality {
-            line2 += tmp + " "
-        }
-        if let tmp = placemark.administrativeArea {
-            line2 += tmp + " "
-        }
-        if let tmp = placemark.postalCode {
-            line2 += tmp }
-        // 5
-        return line1 + line2
+        
     }
 }
 
 #Preview {
     NavigationStack {
         TagLocationView()
+            .environment(\.managedObjectContext, PersistenceController.preview.viewContext)
     }
 }

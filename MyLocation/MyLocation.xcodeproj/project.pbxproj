@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5E2002812D47D563005DA202 /* MyLocations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E20027F2D47D563005DA202 /* MyLocations.xcdatamodeld */; };
+		5E2002842D47D844005DA202 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2002822D47D844005DA202 /* Location+CoreDataClass.swift */; };
+		5E2002852D47D844005DA202 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2002832D47D844005DA202 /* Location+CoreDataProperties.swift */; };
+		5E2002872D48FFCF005DA202 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2002862D48FFCF005DA202 /* Persistence.swift */; };
 		5E3BC3402D4360A900D54A7F /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3BC33F2D4360A900D54A7F /* View+Ext.swift */; };
 		5E3BC3422D44A85A00D54A7F /* TagLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3BC3412D44A85A00D54A7F /* TagLocationView.swift */; };
 		5E3BC3442D44B47300D54A7F /* DateFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3BC3432D44B47300D54A7F /* DateFormatter+Ext.swift */; };
@@ -18,11 +21,16 @@
 		5E3EC1DD2D3E891C0083582A /* CurrentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3EC1DC2D3E891C0083582A /* CurrentLocationView.swift */; };
 		5E3EC1DF2D3ED15D0083582A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3EC1DE2D3ED15D0083582A /* LocationManager.swift */; };
 		5E3EC1E22D3F7D0B0083582A /* Button+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3EC1E12D3F7D0B0083582A /* Button+Ext.swift */; };
+		5E9200A42D51EE93000F3459 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9200A32D51EE93000F3459 /* Functions.swift */; };
+		5E9200A72D5206F7000F3459 /* MyLocationTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9200A62D5206F7000F3459 /* MyLocationTabView.swift */; };
 		5EE179BC2D46522900BC8247 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3BC34A2D464F4300D54A7F /* HudView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5E2002802D47D563005DA202 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		5E2002822D47D844005DA202 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5E2002832D47D844005DA202 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5E2002862D48FFCF005DA202 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		5E3BC33F2D4360A900D54A7F /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		5E3BC3412D44A85A00D54A7F /* TagLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLocationView.swift; sourceTree = "<group>"; };
 		5E3BC3432D44B47300D54A7F /* DateFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Ext.swift"; sourceTree = "<group>"; };
@@ -35,6 +43,8 @@
 		5E3EC1DC2D3E891C0083582A /* CurrentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationView.swift; sourceTree = "<group>"; };
 		5E3EC1DE2D3ED15D0083582A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5E3EC1E12D3F7D0B0083582A /* Button+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Ext.swift"; sourceTree = "<group>"; };
+		5E9200A32D51EE93000F3459 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		5E9200A62D5206F7000F3459 /* MyLocationTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +61,10 @@
 		5E20027E2D47D543005DA202 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				5E2002832D47D844005DA202 /* Location+CoreDataProperties.swift */,
+				5E2002822D47D844005DA202 /* Location+CoreDataClass.swift */,
 				5E20027F2D47D563005DA202 /* MyLocations.xcdatamodeld */,
+				5E2002862D48FFCF005DA202 /* Persistence.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -104,6 +117,7 @@
 		5E3EC1D52D3E87AF0083582A /* Tab Views */ = {
 			isa = PBXGroup;
 			children = (
+				5E9200A52D5206C9000F3459 /* ContainerVIew */,
 				5E3EC1D82D3E87CF0083582A /* First Tab */,
 				5E3EC1D72D3E87C30083582A /* Second Tab */,
 				5E3EC1D62D3E87B80083582A /* Third Tab */,
@@ -143,8 +157,17 @@
 				5E3EC1E12D3F7D0B0083582A /* Button+Ext.swift */,
 				5E3BC33F2D4360A900D54A7F /* View+Ext.swift */,
 				5E3BC3432D44B47300D54A7F /* DateFormatter+Ext.swift */,
+				5E9200A32D51EE93000F3459 /* Functions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5E9200A52D5206C9000F3459 /* ContainerVIew */ = {
+			isa = PBXGroup;
+			children = (
+				5E9200A62D5206F7000F3459 /* MyLocationTabView.swift */,
+			);
+			path = ContainerVIew;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,13 +243,18 @@
 				5E3EC1DF2D3ED15D0083582A /* LocationManager.swift in Sources */,
 				5E3EC1DD2D3E891C0083582A /* CurrentLocationView.swift in Sources */,
 				5E3BC3462D44B89E00D54A7F /* CategoryPickerView.swift in Sources */,
+				5E9200A42D51EE93000F3459 /* Functions.swift in Sources */,
 				5E3BC3422D44A85A00D54A7F /* TagLocationView.swift in Sources */,
 				5E3BC3442D44B47300D54A7F /* DateFormatter+Ext.swift in Sources */,
 				5E3BC3402D4360A900D54A7F /* View+Ext.swift in Sources */,
 				5E3EC1C82D3E875E0083582A /* MyLocationApp.swift in Sources */,
+				5E2002872D48FFCF005DA202 /* Persistence.swift in Sources */,
 				5E2002812D47D563005DA202 /* MyLocations.xcdatamodeld in Sources */,
+				5E2002852D47D844005DA202 /* Location+CoreDataProperties.swift in Sources */,
 				5E3EC1E22D3F7D0B0083582A /* Button+Ext.swift in Sources */,
+				5E2002842D47D844005DA202 /* Location+CoreDataClass.swift in Sources */,
 				5EE179BC2D46522900BC8247 /* HudView.swift in Sources */,
+				5E9200A72D5206F7000F3459 /* MyLocationTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

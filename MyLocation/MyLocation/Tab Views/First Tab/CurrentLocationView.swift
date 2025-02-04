@@ -82,4 +82,5 @@ struct CurrentLocationView: View {
 
 #Preview {
     CurrentLocationView()
+        .environment(\.managedObjectContext, PersistenceController.preview.viewContext)
 }
