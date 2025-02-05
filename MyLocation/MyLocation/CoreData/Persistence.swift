@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import CoreLocation
 
 class PersistenceController {
     
@@ -29,6 +30,20 @@ class PersistenceController {
         location.latitude = 37.3346438
         location.longitude = -122.1531676
         location.locationDescription = "This main apple campus my job"
+        
+        let location1 = Location(context: context)
+        location1.category = "Store"
+        location1.date = Date()
+        location1.latitude = 37.3346438
+        location1.longitude = -122.1531676
+        location1.locationDescription = "This main apple campus my job"
+        
+        let location2 = Location(context: context)
+        location2.category = "Apple"
+        location2.date = Date()
+        location2.latitude = 37.3346438
+        location2.longitude = -122.1531676
+        location2.locationDescription = "This main apple campus my job"
         
         do {
             try context.save()

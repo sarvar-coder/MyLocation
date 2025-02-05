@@ -184,11 +184,11 @@ struct TagLocationView: View {
         let location = Location(context: context)
         
         location.locationDescription = descriptionText
+        location.category = selectedCategory
         location.latitude = coordinate.latitude
         location.longitude = coordinate.longitude
         location.placemark = placeMark
         location.date = Date()
-        
         do {
             if savedOnce {
                 try context.save()
@@ -196,7 +196,6 @@ struct TagLocationView: View {
         } catch {
             print(error.localizedDescription)
         }
-        
     }
 }
 

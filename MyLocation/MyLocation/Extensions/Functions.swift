@@ -31,3 +31,29 @@ public func string(from placemark: CLPlacemark) -> String {
     // 5
     return line1 + line2
 }
+
+public func stringPlacemark(_ placemark: CLPlacemark) -> String {
+    var text = ""
+    
+    if let tmp = placemark.subThoroughfare {
+        text += tmp + " "
+    }
+    
+    if let tmp = placemark.thoroughfare {
+        text += tmp + ", "
+    }
+    
+    if let tmp = placemark.locality {
+        text += tmp + " "
+    }
+    
+    return text
+}
+
+public func configureDescription(_ location: Location) -> String {
+    if location.locationDescription.isEmpty {
+        return "(No Description :)"
+    } else {
+       return location.locationDescription
+    }
+}

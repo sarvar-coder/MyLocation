@@ -23,6 +23,8 @@
 		5E3EC1E22D3F7D0B0083582A /* Button+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3EC1E12D3F7D0B0083582A /* Button+Ext.swift */; };
 		5E9200A42D51EE93000F3459 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9200A32D51EE93000F3459 /* Functions.swift */; };
 		5E9200A72D5206F7000F3459 /* MyLocationTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9200A62D5206F7000F3459 /* MyLocationTabView.swift */; };
+		5E9200A92D520836000F3459 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9200A82D520836000F3459 /* LocationsView.swift */; };
+		5E9200AB2D5209A3000F3459 /* LocationsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9200AA2D5209A3000F3459 /* LocationsCellView.swift */; };
 		5EE179BC2D46522900BC8247 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3BC34A2D464F4300D54A7F /* HudView.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,8 @@
 		5E3EC1E12D3F7D0B0083582A /* Button+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Ext.swift"; sourceTree = "<group>"; };
 		5E9200A32D51EE93000F3459 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		5E9200A62D5206F7000F3459 /* MyLocationTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationTabView.swift; sourceTree = "<group>"; };
+		5E9200A82D520836000F3459 /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
+		5E9200AA2D5209A3000F3459 /* LocationsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,8 @@
 		5E3EC1D72D3E87C30083582A /* Second Tab */ = {
 			isa = PBXGroup;
 			children = (
+				5E9200A82D520836000F3459 /* LocationsView.swift */,
+				5E9200AA2D5209A3000F3459 /* LocationsCellView.swift */,
 			);
 			path = "Second Tab";
 			sourceTree = "<group>";
@@ -242,9 +248,11 @@
 			files = (
 				5E3EC1DF2D3ED15D0083582A /* LocationManager.swift in Sources */,
 				5E3EC1DD2D3E891C0083582A /* CurrentLocationView.swift in Sources */,
+				5E9200AB2D5209A3000F3459 /* LocationsCellView.swift in Sources */,
 				5E3BC3462D44B89E00D54A7F /* CategoryPickerView.swift in Sources */,
 				5E9200A42D51EE93000F3459 /* Functions.swift in Sources */,
 				5E3BC3422D44A85A00D54A7F /* TagLocationView.swift in Sources */,
+				5E9200A92D520836000F3459 /* LocationsView.swift in Sources */,
 				5E3BC3442D44B47300D54A7F /* DateFormatter+Ext.swift in Sources */,
 				5E3BC3402D4360A900D54A7F /* View+Ext.swift in Sources */,
 				5E3EC1C82D3E875E0083582A /* MyLocationApp.swift in Sources */,

@@ -13,7 +13,7 @@ struct MyLocationApp: App {
     let persistentContainer = PersistenceController.shared
     var body: some Scene {
         WindowGroup {
-            CurrentLocationView()
+            MyLocationTabView()
                 .environment(\.managedObjectContext, persistentContainer.viewContext)
         }
     }

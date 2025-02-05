@@ -14,7 +14,10 @@ struct MyLocationTabView: View {
         TabView(selection: $selectedTab ) {
             CurrentLocationView()
                 .tabItem { Text("Tag") }
-            
+            NavigationStack {
+                LocationsView()
+            }
+                .tabItem { Text("Locations") }
         }
     }
 }
