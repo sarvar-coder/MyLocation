@@ -7,6 +7,9 @@
 
 import SwiftUI
 import CoreLocation
+import PhotosUI
+import AVFoundation
+
 
 struct TagLocationView: View {
     
@@ -17,8 +20,11 @@ struct TagLocationView: View {
     @AppStorage("selectedcategory") private var selectedCategory = "No Category"
     @State private var showHudView = false
     @FocusState private var keyBoarHidden: Bool
-    @State private var savedOnce = true
     
+    @State private var prossedImage: Image?
+    @State private var selectedImage: PhotosPickerItem?
+    @State private var showAlert = false
+    @State private var showLibrary = false
     
     let boxWidth: CGFloat = 96
     let boxHeight: CGFloat = 96
@@ -32,6 +38,7 @@ struct TagLocationView: View {
         ZStack {
             if showHudView {
                 HudView()
+                    .zIndex(1)
                     .transition(.opacity)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -41,16 +48,16 @@ struct TagLocationView: View {
                         }
                     }
             }
-            VStack {
-                content
+            ScrollView {
+                VStack {
+                    content
+                }
             }
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-
                     save()
-                    savedOnce = false
                     withAnimation {
                         showHudView = true
                     }
@@ -62,7 +69,7 @@ struct TagLocationView: View {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
                     dismiss()
-                    savedOnce = true
+                    
                 } label: {
                     Text("Close")
                 }
@@ -79,33 +86,34 @@ struct TagLocationView: View {
             NavigationLink {
                 CategoryPickerView(selectedCategory: $selectedCategory)
             } label: {
-                category
+                categoryButton
             }
             NavigationLink {
                 Text("Photo picker")
             } label: {
                 addPhotoButton
             }
+            
             latitude
             longitude
             address
             date
             Spacer()
         }
-                .onTapGesture { keyBoarHidden = false }
+        .onTapGesture { keyBoarHidden = false }
     }
     
     @ViewBuilder
     var descriptionTextField: some View {
         TextField("Description", text: $descriptionText)
-                    .focused($keyBoarHidden)
+            .focused($keyBoarHidden)
             .padding([.leading, .trailing, .top])
         Divider()
-            .padding(.bottom, 70)
+            .padding(.bottom, 30)
     }
     
     @ViewBuilder
-    var category: some View {
+    var categoryButton: some View {
         
         HStack {
             Text("Category")
@@ -120,13 +128,22 @@ struct TagLocationView: View {
     @ViewBuilder
     var addPhotoButton: some View {
         
-        HStack {
-            Text("Add Photo")
-            Spacer()
-            Image(systemName: "chevron.right")
-                .foregroundStyle(.secondary)
-        }
-        .padding()
+        PhotosPicker(selection: $selectedImage) {
+            if let prossedImage {
+                prossedImage
+                    .resizable()
+                    .frame(width: 200, height: 200)
+                    .aspectRatio(contentMode: .fill)
+            } else {
+                HStack {
+                    Text("Add Photo")
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundStyle(.secondary)
+                }
+                .padding()
+            }
+        }.onChange(of: selectedImage, loadImage)
     }
     
     @ViewBuilder
@@ -189,12 +206,33 @@ struct TagLocationView: View {
         location.longitude = coordinate.longitude
         location.placemark = placeMark
         location.date = Date()
-        do {
-            if savedOnce {
-                try context.save()
+        
+        if let selectedImage  = selectedImage {
+            if !location.hasPhoto {
+                location.photoID = Location.nextPhotoID() as NSNumber
             }
+            
+            Task {
+                if let data = try await selectedImage.loadTransferable(type: Data.self)  {
+                    try data.write(to: location.photoURL, options: .atomic)
+                }
+            }
+        }
+        
+        do {
+            try context.save()
         } catch {
             print(error.localizedDescription)
+        }
+    }
+    
+    private func loadImage()  {
+        Task {
+            guard let imageData = try await selectedImage?.loadTransferable(type: Data.self) else { return }
+            
+            guard let inputImage = UIImage(data: imageData) else { return}
+            
+            prossedImage = Image(uiImage: inputImage)
         }
     }
 }

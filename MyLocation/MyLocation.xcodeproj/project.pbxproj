@@ -25,6 +25,8 @@
 		5E9200A72D5206F7000F3459 /* MyLocationTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9200A62D5206F7000F3459 /* MyLocationTabView.swift */; };
 		5E9200A92D520836000F3459 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9200A82D520836000F3459 /* LocationsView.swift */; };
 		5E9200AB2D5209A3000F3459 /* LocationsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9200AA2D5209A3000F3459 /* LocationsCellView.swift */; };
+		5E9200AE2D546DF5000F3459 /* PlacemarkTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9200AD2D546DF5000F3459 /* PlacemarkTransformer.swift */; };
+		5E9200B02D547425000F3459 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9200AF2D547425000F3459 /* MapView.swift */; };
 		5EE179BC2D46522900BC8247 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3BC34A2D464F4300D54A7F /* HudView.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		5E9200A62D5206F7000F3459 /* MyLocationTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationTabView.swift; sourceTree = "<group>"; };
 		5E9200A82D520836000F3459 /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
 		5E9200AA2D5209A3000F3459 /* LocationsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCellView.swift; sourceTree = "<group>"; };
+		5E9200AD2D546DF5000F3459 /* PlacemarkTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacemarkTransformer.swift; sourceTree = "<group>"; };
+		5E9200AF2D547425000F3459 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,16 +73,9 @@
 				5E2002822D47D844005DA202 /* Location+CoreDataClass.swift */,
 				5E20027F2D47D563005DA202 /* MyLocations.xcdatamodeld */,
 				5E2002862D48FFCF005DA202 /* Persistence.swift */,
+				5E9200AD2D546DF5000F3459 /* PlacemarkTransformer.swift */,
 			);
 			path = CoreData;
-			sourceTree = "<group>";
-		};
-		5E3BC3492D464F2500D54A7F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				5E3EC1DE2D3ED15D0083582A /* LocationManager.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		5E3EC1BB2D3E875E0083582A = {
@@ -132,6 +129,7 @@
 		5E3EC1D62D3E87B80083582A /* Third Tab */ = {
 			isa = PBXGroup;
 			children = (
+				5E9200AF2D547425000F3459 /* MapView.swift */,
 			);
 			path = "Third Tab";
 			sourceTree = "<group>";
@@ -148,7 +146,7 @@
 		5E3EC1D82D3E87CF0083582A /* First Tab */ = {
 			isa = PBXGroup;
 			children = (
-				5E3BC3492D464F2500D54A7F /* ViewModel */,
+				5E3EC1DE2D3ED15D0083582A /* LocationManager.swift */,
 				5E3EC1DC2D3E891C0083582A /* CurrentLocationView.swift */,
 				5E3BC3412D44A85A00D54A7F /* TagLocationView.swift */,
 				5E3BC3452D44B89E00D54A7F /* CategoryPickerView.swift */,
@@ -254,12 +252,14 @@
 				5E3BC3422D44A85A00D54A7F /* TagLocationView.swift in Sources */,
 				5E9200A92D520836000F3459 /* LocationsView.swift in Sources */,
 				5E3BC3442D44B47300D54A7F /* DateFormatter+Ext.swift in Sources */,
+				5E9200AE2D546DF5000F3459 /* PlacemarkTransformer.swift in Sources */,
 				5E3BC3402D4360A900D54A7F /* View+Ext.swift in Sources */,
 				5E3EC1C82D3E875E0083582A /* MyLocationApp.swift in Sources */,
 				5E2002872D48FFCF005DA202 /* Persistence.swift in Sources */,
 				5E2002812D47D563005DA202 /* MyLocations.xcdatamodeld in Sources */,
 				5E2002852D47D844005DA202 /* Location+CoreDataProperties.swift in Sources */,
 				5E3EC1E22D3F7D0B0083582A /* Button+Ext.swift in Sources */,
+				5E9200B02D547425000F3459 /* MapView.swift in Sources */,
 				5E2002842D47D844005DA202 /* Location+CoreDataClass.swift in Sources */,
 				5EE179BC2D46522900BC8247 /* HudView.swift in Sources */,
 				5E9200A72D5206F7000F3459 /* MyLocationTabView.swift in Sources */,
@@ -399,7 +399,9 @@
 				DEVELOPMENT_TEAM = 386NUBNWC7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Add photos to your locations";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app lets you keep track of interesting places. It needs access to the GPS\ncoordinates for your location";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Add photos to your locations";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -430,7 +432,9 @@
 				DEVELOPMENT_TEAM = 386NUBNWC7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Add photos to your locations";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app lets you keep track of interesting places. It needs access to the GPS\ncoordinates for your location";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Add photos to your locations";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

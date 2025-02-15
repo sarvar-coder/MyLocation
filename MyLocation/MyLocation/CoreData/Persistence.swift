@@ -55,6 +55,9 @@ class PersistenceController {
     }()
     
     init(inMemory: Bool = false) {
+        
+        ValueTransformer.setValueTransformer(PlacemarkTransformer(), forName: NSValueTransformerName("Placemark"))
+        
         self.container = NSPersistentContainer(name: "MyLocations")
         
         if inMemory {

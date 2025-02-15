@@ -18,6 +18,9 @@ struct MyLocationTabView: View {
                 LocationsView()
             }
                 .tabItem { Text("Locations") }
+            
+            MapView()
+                .tabItem { Text("Map") }
         }
     }
 }

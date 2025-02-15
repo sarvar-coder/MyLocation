@@ -12,11 +12,21 @@ struct LocationsCellView: View {
     let location: Location
     
     var body: some View {
-        HStack {
+        HStack(spacing: 20) {
+            if let image = location.photoImage, location.hasPhoto {
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(width: 52, height: 52)
+            } else {
+                Image(systemName: "photo.artframe")
+                    .resizable()
+                    .frame(width: 52, height: 52)
+            }
             VStack(alignment:.leading, spacing: 8) {
                 Text(configureDescription(location))
                     .bold()
                     .font(.system(size: 18))
+                    .foregroundStyle(.primary)
                 Spacer()
                 HStack {
                     if let placemark = location.placemark {

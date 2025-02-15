@@ -15,8 +15,11 @@ struct MyLocationApp: App {
         WindowGroup {
             MyLocationTabView()
                 .environment(\.managedObjectContext, persistentContainer.viewContext)
+                .onAppear {
+                    print(applicationDocumentsDirectory.path())
+                }
         }
+    
     }
 }
 
-// TODO: - Clean The Code
