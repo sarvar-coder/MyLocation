@@ -6,6 +6,7 @@
 ## User settings
 xcuserdata/
 .DS_Store
+MyLocation
 ## Obj-C/Swift specific
 *.hmap
 
