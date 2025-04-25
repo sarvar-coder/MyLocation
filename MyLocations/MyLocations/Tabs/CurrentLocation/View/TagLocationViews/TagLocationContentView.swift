@@ -21,12 +21,11 @@ struct TagLocationContentView: View {
     var coordinate: Coordinate
     var placemark: CLPlacemark?
     
-//    var saveImage: (UIImage?) -> Void
-    
     var body: some View {
         VStack {
             
             List {
+                
                 Section("Description") {
                     TextEditor(text: $text)
                         .frame(height: 88)
@@ -122,9 +121,4 @@ struct TagLocationContentView: View {
             }
         }
     }
-}
-
-extension TagLocationContentView {
-    // MARK: - Save to file manager
-    
 }

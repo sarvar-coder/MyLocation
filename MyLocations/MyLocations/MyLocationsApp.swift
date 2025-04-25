@@ -15,11 +15,14 @@ struct MyLocationsApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistentController.viewContext)
-                .onAppear { print(documentsDirectory)}
+                .onAppear { print(applicationDocumentsDirectory)}
         } 
     }
 }
 
-var documentsDirectory: URL {
-    URL.documentsDirectory
-}
+let applicationDocumentsDirectory: URL = {
+  let paths = FileManager.default.urls(
+    for: .documentDirectory,
+       in: .userDomainMask)
+  return paths[0]
+}()

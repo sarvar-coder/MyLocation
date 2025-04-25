@@ -38,14 +38,14 @@ public class Location: NSManagedObject {
         photoID != nil
     }
     
-    public var photoURL: URL? {
-        guard let photoID = photoID else { return nil }
-        let fileName = "Photo\(photoID.intValue).jpg"
-        return documentsDirectory.appendingPathComponent(fileName)
+    public var photoURL: URL {
+        print(photoID != nil, "foo 2", photoID)
+//        assert(photoID != nil, "crash")
+        let fileName = "Photo\(photoID?.intValue).jpg"
+        return applicationDocumentsDirectory.appendingPathComponent(fileName)
     }
     
     var photoImage: UIImage? {
-        guard let photoURL = photoURL else { return nil }
         return UIImage(contentsOfFile: photoURL.path)
     }
     
@@ -57,11 +57,12 @@ public class Location: NSManagedObject {
     }
     
     func removePhotoFile() {
-      if let photoURL {
+      if hasPhoto {
         do {
           try FileManager.default.removeItem(at: photoURL)
-    } catch {
+        } catch {
           print("Error removing file: \(error)")
         }
-    } }
+      }
+    }
 }

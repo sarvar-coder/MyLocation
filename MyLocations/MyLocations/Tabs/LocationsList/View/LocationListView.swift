@@ -27,7 +27,7 @@ struct LocationListView: View {
                         
                     }
                     .onDelete{ indexSet in
-                        delete(in: indexSet)
+                        delete(indexSet: indexSet)
                     }
                 }
                 .listStyle(.plain)
@@ -49,17 +49,18 @@ struct LocationListView: View {
         }
     }
     
-    func delete(in indexSet: IndexSet) {
+    func delete(indexSet: IndexSet) {
         indexSet.forEach { index in
             let location = locations[index]
+            location.removePhotoFile()
             viewContext.delete(location)
             do {
                 try viewContext.save()
             } catch {
                 print(error.localizedDescription)
             }
-            
-            location.removePhotoFile()
+      
+            location.photoID = nil
         }
     }
 }
