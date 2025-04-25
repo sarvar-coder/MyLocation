@@ -49,7 +49,7 @@ struct TagLocationView: View {
                         Button(location != nil ? "Update" : "Done") {
                             withAnimation(.easeIn) { isPresentedHudView = true }
                             if let location {
-                                updateLocation(location)
+                                self.updateLocation(location)
                             } else {
                                 self.saveLocation()
                             }
@@ -107,7 +107,6 @@ struct TagLocationView: View {
             thumbImage: $thumbImage,
             coordinate: coordinate,
             placemark: location != nil ? location?.placemark : placeMark)
-           
     }
 }
 
@@ -125,35 +124,49 @@ extension TagLocationView {
         location.longitude = Double(coordinate.longitude) ?? 0
         location.placemark = placeMark
         location.photoID = nil
-        // TODO: Save photo
         
-        do {
-            try viewcontext.save()
-        } catch {
-            debugPrint(error.localizedDescription, "foo")
-        }
-        
-        saveImage(image: thumbImage, location: location)
-    }
-    
-    func saveImage(image: UIImage?, location: Location) {
-        if let image {
-            
-            print(!location.hasPhoto, "foo 1")
+        if let image = thumbImage {
+            print(!location.hasPhoto, "foo1", location.photoID)
             if !location.hasPhoto {
-                location.photoID = Location.nextPhotoID() as NSNumber
+                location.photoID = NSNumber(value: Location.nextPhotoID())
             }
-     
+            
             if let data = image.jpegData(compressionQuality: 0.5) {
                 do {
-                    print("saved", "Foo")
-                    try data.write(to: location.photoURL!, options: .atomic)
+                    try data.write(to: location.photoURL, options: .atomic)
                 } catch {
-                    print("Error while saving, FOO \(error.localizedDescription)")
+                    print(error.localizedDescription, "Saving error")
                 }
             }
         }
+        
+        do {
+            try viewcontext.save()
+            
+        } catch {
+            debugPrint(error.localizedDescription, "foo")
+        }
+//        location.photoID = nil 
     }
+    
+//    func saveImage(image: UIImage?, location: Location) {
+//        if let image = image  {
+//            
+//            print(!location.hasPhoto, location.photoID, "foo 1")
+//            if !location.hasPhoto {
+//                location.photoID = Location.nextPhotoID() as NSNumber
+//            }
+//     
+//            if let data = image.jpegData(compressionQuality: 0.5) {
+//                do {
+//                    print("saved", "Foo")
+//                    try data.write(to: location.photoURL, options: .atomic)
+//                } catch {
+//                    print("Error while saving, FOO \(error.localizedDescription)")
+//                }
+//            }
+//        }
+//    }
 }
 
 #Preview {
