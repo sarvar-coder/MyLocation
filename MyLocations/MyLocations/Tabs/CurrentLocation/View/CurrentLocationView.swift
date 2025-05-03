@@ -43,10 +43,9 @@ struct CurrentLocationView: View {
             showTagLocationView.toggle()
         } label: {
             Text("Tag Location")
+                .foregroundStyle(tintColor)
         }
-        
         .centerView()
-        
     }
     
     var getMyLocationButton: some View {
@@ -54,6 +53,7 @@ struct CurrentLocationView: View {
             viewModel.getLocation()
         } label: {
             Text(viewModel.getButtontitle)
+                .foregroundStyle(tintColor)
         }
         .centerView()
         .padding([.bottom], 16)

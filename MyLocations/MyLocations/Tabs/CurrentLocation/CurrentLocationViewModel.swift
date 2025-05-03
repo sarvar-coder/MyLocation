@@ -41,6 +41,7 @@ class CurrentLocationViewModel: ObservableObject {
             messageLabel = "Tap 'Get My Location' Button to Start"
             addressText = ""
         }
+        configureButtonTitle()
     }
     
     func configureButtonTitle() {

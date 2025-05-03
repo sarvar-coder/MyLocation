@@ -46,13 +46,21 @@ struct LocationMapView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("Locations") {
+                    Button {
                         position = .automatic
+                    } label: {
+                        Image(ImagesManager.locations)
+                            .renderingMode(.template)
+                            .tint(tintColor)
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("User") {
+                    Button {
                         position = .userLocation(fallback: .automatic)
+                    } label: {
+                        Image(ImagesManager.user)
+                            .renderingMode(.template)
+                            .tint(tintColor)
                     }
                 }
             }

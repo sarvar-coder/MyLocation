@@ -16,6 +16,7 @@ class LocationManager: NSObject {
     var location: CLLocation?
     var locationError: Error?
     var updatingLocation = false
+    var isDenied = false
     
     let geoCoder = CLGeocoder()
     var placeMark: CLPlacemark?
@@ -50,6 +51,22 @@ extension LocationManager: CLLocationManagerDelegate {
         }
         
         self.locationError = nil
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+            
+        case .notDetermined:
+            isDenied = false
+            askPermission()
+        case .restricted, .denied:
+            isDenied = true
+        case .authorizedAlways, .authorizedWhenInUse:
+            isDenied = false
+            startLocation()
+        @unknown default:
+            print("Unkown")
+        }
     }
 }
 // MARK: - Helper methods

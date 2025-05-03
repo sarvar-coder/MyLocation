@@ -35,6 +35,7 @@ struct LocationListView: View {
             }
             .toolbar {
                 EditButton()
+                    .tint(tintColor)
             }
         }
         .navigationTitle("Locations")

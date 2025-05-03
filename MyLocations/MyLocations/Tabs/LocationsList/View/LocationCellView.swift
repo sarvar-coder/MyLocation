@@ -19,7 +19,7 @@ struct LocationCellView: View {
                     .clipShape(.circle)
                     
             } else {
-                Image(systemName: "x.circle")
+                Image(ImagesManager.noPhoto)
                     .resizable()
                     .frame(width: 48, height: 48)
                     .aspectRatio(contentMode: .fill)

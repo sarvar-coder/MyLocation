@@ -42,6 +42,7 @@ struct TagLocationView: View {
                             Button("Cancel") {
                                 dismiss()
                             }
+                            .tint(tintColor)
                         }
                     }
                     
@@ -57,6 +58,7 @@ struct TagLocationView: View {
                                 dismiss()
                             }
                         }
+                        .tint(tintColor)
                     }
                 }
             }
