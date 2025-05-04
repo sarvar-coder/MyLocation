@@ -15,7 +15,7 @@ class LocationManager: NSObject {
     let locationManager = CLLocationManager()
     var location: CLLocation?
     var locationError: Error?
-    var updatingLocation = false
+    var updatingLocation = true
     var isDenied = false
     
     let geoCoder = CLGeocoder()
@@ -58,7 +58,6 @@ extension LocationManager: CLLocationManagerDelegate {
             
         case .notDetermined:
             isDenied = false
-            askPermission()
         case .restricted, .denied:
             isDenied = true
         case .authorizedAlways, .authorizedWhenInUse:

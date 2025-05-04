@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import SwiftUI
 
 class CurrentLocationViewModel: ObservableObject {
     
@@ -24,31 +25,38 @@ class CurrentLocationViewModel: ObservableObject {
     
     func getLocation() {
         locationManager.askPermission()
+        
         updateLabel()
     }
     
     func updateLabel() {
         if let location = locationManager.location {
-            latatitude = String(format: "%.8f", location.coordinate.latitude)
-            longitude = String(format: "%.8f", location.coordinate.longitude)
-            tagButtonIsHidden = false
-            messageLabel = ""
-            displayAddress()
+            withAnimation(.easeInOut(duration: 0.3)) {
+                latatitude = String(format: "%.8f", location.coordinate.latitude)
+                longitude = String(format: "%.8f", location.coordinate.longitude)
+                tagButtonIsHidden = false
+                messageLabel = ""
+                displayAddress()
+            }
         } else {
-            latatitude = ""
-            longitude = ""
-            tagButtonIsHidden = true
-            messageLabel = "Tap 'Get My Location' Button to Start"
-            addressText = ""
+            withAnimation(.easeInOut(duration: 0.3)) {
+                latatitude = ""
+                longitude = ""
+                tagButtonIsHidden = true
+                messageLabel = "Tap 'Get My Location' Button to Start"
+                addressText = ""
+            }
         }
         configureButtonTitle()
     }
     
     func configureButtonTitle() {
-        if !locationManager.updatingLocation {
-            getButtontitle = "Stop"
-        } else {
-            getButtontitle = "Get My Location"
+        withAnimation(.bouncy(duration: 0.3)) {
+            if !locationManager.updatingLocation {
+                getButtontitle = "Stop"
+            } else {
+                getButtontitle = "Get My Location"
+            }
         }
     }
     
