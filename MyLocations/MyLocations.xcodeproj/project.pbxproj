@@ -18,6 +18,7 @@
 		5E1939232DABDC7E00C139B4 /* PlaceMarkTransFormer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1939222DABDC7E00C139B4 /* PlaceMarkTransFormer.swift */; };
 		5E56B78E2DB53CF5000C013A /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E56B78D2DB53CF5000C013A /* Coordinate.swift */; };
 		5E70D5A72DC5EB3E000D1AA5 /* ImagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E70D5A62DC5EB3E000D1AA5 /* ImagesManager.swift */; };
+		5E70D5A92DC71EB3000D1AA5 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E70D5A82DC71EB3000D1AA5 /* ContainerView.swift */; };
 		5EA858F62DA3C6FD0047033E /* Button+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA858F52DA3C6FD0047033E /* Button+Ext.swift */; };
 		5EA858F82DA3D1430047033E /* LocationBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA858F72DA3D1430047033E /* LocationBlockView.swift */; };
 		5EC2889C2DA56CB100A8F8C6 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC2889B2DA56CB100A8F8C6 /* Functions.swift */; };
@@ -48,6 +49,7 @@
 		5E1939222DABDC7E00C139B4 /* PlaceMarkTransFormer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMarkTransFormer.swift; sourceTree = "<group>"; };
 		5E56B78D2DB53CF5000C013A /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		5E70D5A62DC5EB3E000D1AA5 /* ImagesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesManager.swift; sourceTree = "<group>"; };
+		5E70D5A82DC71EB3000D1AA5 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		5EA858F52DA3C6FD0047033E /* Button+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Ext.swift"; sourceTree = "<group>"; };
 		5EA858F72DA3D1430047033E /* LocationBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBlockView.swift; sourceTree = "<group>"; };
 		5EC2889B2DA56CB100A8F8C6 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				5EC2889B2DA56CB100A8F8C6 /* Functions.swift */,
 				5E70D5A62DC5EB3E000D1AA5 /* ImagesManager.swift */,
+				5E70D5A82DC71EB3000D1AA5 /* ContainerView.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				5E18790F2DA815BA0072DE55 /* TagLocationView.swift in Sources */,
 				5EEC98BA2DA2989800576B72 /* LocationManager.swift in Sources */,
 				5EC50CE22DAA7FB1002F437A /* HudView.swift in Sources */,
+				5E70D5A92DC71EB3000D1AA5 /* ContainerView.swift in Sources */,
 				5E19391C2DABC81500C139B4 /* Location+CoreDataClass.swift in Sources */,
 				5E70D5A72DC5EB3E000D1AA5 /* ImagesManager.swift in Sources */,
 				5E56B78E2DB53CF5000C013A /* Coordinate.swift in Sources */,
