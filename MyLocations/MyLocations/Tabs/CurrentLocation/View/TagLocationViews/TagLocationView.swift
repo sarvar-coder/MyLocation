@@ -144,7 +144,6 @@ extension TagLocationView {
         
         do {
             try viewcontext.save()
-            
         } catch {
             debugPrint(error.localizedDescription, "foo")
         }
