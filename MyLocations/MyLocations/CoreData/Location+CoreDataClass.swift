@@ -39,7 +39,6 @@ public class Location: NSManagedObject {
     }
     
     public var photoURL: URL {
-        print(photoID != nil, "foo 2", photoID)
 //        assert(photoID != nil, "crash")
         let fileName = "Photo\(photoID?.intValue).jpg"
         return applicationDocumentsDirectory.appendingPathComponent(fileName)

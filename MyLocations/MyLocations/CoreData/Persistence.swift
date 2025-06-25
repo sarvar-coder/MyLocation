@@ -7,7 +7,7 @@
 
 import CoreData
 
-class  PersistenceController {
+class PersistenceController {
     static let shared = PersistenceController()
 
     static var preview: PersistenceController = {
@@ -44,7 +44,7 @@ class  PersistenceController {
         container.viewContext
     }
 
-    init(inMemory: Bool = false) {
+   private init(inMemory: Bool = false) {
         
         ValueTransformer.setValueTransformer(PlaceMarkTransFormer(), forName: NSValueTransformerName(rawValue: "Placemark"))
         

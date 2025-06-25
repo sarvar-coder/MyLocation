@@ -19,6 +19,9 @@
 		5E56B78E2DB53CF5000C013A /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E56B78D2DB53CF5000C013A /* Coordinate.swift */; };
 		5E70D5A72DC5EB3E000D1AA5 /* ImagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E70D5A62DC5EB3E000D1AA5 /* ImagesManager.swift */; };
 		5E70D5A92DC71EB3000D1AA5 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E70D5A82DC71EB3000D1AA5 /* ContainerView.swift */; };
+		5E973F992E067AAE00D8F1D9 /* PhotoSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E973F982E067AAE00D8F1D9 /* PhotoSelection.swift */; };
+		5E973F9B2E067AE200D8F1D9 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E973F9A2E067ADA00D8F1D9 /* PhotoPickerView.swift */; };
+		5E973F9D2E068BCA00D8F1D9 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E973F9C2E068BC600D8F1D9 /* CameraView.swift */; };
 		5EA858F62DA3C6FD0047033E /* Button+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA858F52DA3C6FD0047033E /* Button+Ext.swift */; };
 		5EA858F82DA3D1430047033E /* LocationBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA858F72DA3D1430047033E /* LocationBlockView.swift */; };
 		5EC2889C2DA56CB100A8F8C6 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC2889B2DA56CB100A8F8C6 /* Functions.swift */; };
@@ -50,6 +53,9 @@
 		5E56B78D2DB53CF5000C013A /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		5E70D5A62DC5EB3E000D1AA5 /* ImagesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesManager.swift; sourceTree = "<group>"; };
 		5E70D5A82DC71EB3000D1AA5 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		5E973F982E067AAE00D8F1D9 /* PhotoSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelection.swift; sourceTree = "<group>"; };
+		5E973F9A2E067ADA00D8F1D9 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
+		5E973F9C2E068BC600D8F1D9 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		5EA858F52DA3C6FD0047033E /* Button+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Ext.swift"; sourceTree = "<group>"; };
 		5EA858F72DA3D1430047033E /* LocationBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBlockView.swift; sourceTree = "<group>"; };
 		5EC2889B2DA56CB100A8F8C6 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -83,6 +89,8 @@
 		5E18790D2DA815A20072DE55 /* TagLocationViews */ = {
 			isa = PBXGroup;
 			children = (
+				5E973F9C2E068BC600D8F1D9 /* CameraView.swift */,
+				5E973F9A2E067ADA00D8F1D9 /* PhotoPickerView.swift */,
 				5E18790E2DA815BA0072DE55 /* TagLocationView.swift */,
 				5E1879102DA81ACB0072DE55 /* TagLocationContentView.swift */,
 				5E1879142DA822280072DE55 /* CategoryPickerView.swift */,
@@ -97,6 +105,7 @@
 				5EC2889B2DA56CB100A8F8C6 /* Functions.swift */,
 				5E70D5A62DC5EB3E000D1AA5 /* ImagesManager.swift */,
 				5E70D5A82DC71EB3000D1AA5 /* ContainerView.swift */,
+				5E973F982E067AAE00D8F1D9 /* PhotoSelection.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -318,12 +327,15 @@
 				5E70D5A92DC71EB3000D1AA5 /* ContainerView.swift in Sources */,
 				5E19391C2DABC81500C139B4 /* Location+CoreDataClass.swift in Sources */,
 				5E70D5A72DC5EB3E000D1AA5 /* ImagesManager.swift in Sources */,
+				5E973F9D2E068BCA00D8F1D9 /* CameraView.swift in Sources */,
 				5E56B78E2DB53CF5000C013A /* Coordinate.swift in Sources */,
 				5E1939212DABD23900C139B4 /* LocationCellView.swift in Sources */,
 				5EC2889C2DA56CB100A8F8C6 /* Functions.swift in Sources */,
 				5E1939232DABDC7E00C139B4 /* PlaceMarkTransFormer.swift in Sources */,
 				5EEC98972DA2968C00576B72 /* ContentView.swift in Sources */,
 				5EEC98A12DA2968D00576B72 /* MyLocations.xcdatamodeld in Sources */,
+				5E973F9B2E067AE200D8F1D9 /* PhotoPickerView.swift in Sources */,
+				5E973F992E067AAE00D8F1D9 /* PhotoSelection.swift in Sources */,
 				5EEC98C22DA2A10000576B72 /* CurrentLocationViewModel.swift in Sources */,
 				5EA858F62DA3C6FD0047033E /* Button+Ext.swift in Sources */,
 				5EA858F82DA3D1430047033E /* LocationBlockView.swift in Sources */,
