@@ -33,6 +33,5 @@ struct PhotoPickerView: View {
                 photoItem = nil
             }
         }
-
     }
 }
