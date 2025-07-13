@@ -8,4 +8,4 @@ During building this app i will be familar with
 - Core Data
 - Databaase 
 
-[![Watch the Demo](thumbnail.png)](https://youtu.be/86R9bp1rzPQ)
+[![Watch the Demo](Video/thumbnail.png)](https://youtu.be/86R9bp1rzPQ)
